@@ -24,7 +24,7 @@ namespace CleanMultitenant.Application.Services.Products.AddProduct
             };
 
             _tenantDbContext.Products.Add(product);
-            return  _tenantDbContext.SaveAsync(); 
+            return await _tenantDbContext.SaveAsync(); 
         }
     }
 }

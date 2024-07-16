@@ -35,7 +35,7 @@ namespace CleanMultitenant.Infra.Contexts.Tenant
 
         public async Task<bool> SaveAsync(CancellationToken cancellationToken = default)
         {
-            var response =  base.SaveChangesAsync(cancellationToken);
+            var response = await base.SaveChangesAsync(cancellationToken);
             return response > 0;
         }
     }

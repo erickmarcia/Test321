@@ -9,11 +9,6 @@
             _notifications = new List<Notification>();
         }
 
-        public async Task<List<Notification>> GetNotifications()
-        {
-            return _notifications;
-        }
-
         public void Handle(string message)
         {
             _notifications.Add(new Notification(message));
@@ -22,6 +17,11 @@
         public bool HasNotification()
         {
             return _notifications.Any();
+        }
+
+        List<Notification> INotifier.GetNotifications()
+        {
+            return _notifications;
         }
     }
 }

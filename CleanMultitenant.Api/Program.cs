@@ -34,7 +34,9 @@ builder.Services.AddDbContext<TenantDbContext>();
 builder.Services.AddScoped<ITenantDbContext>(provider => provider.GetService<TenantDbContext>());
 
 builder.Services.AddControllers();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(AddUserRequestHandler)));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AddUserRequestHandler).Assembly));
+builder.Services.AddScoped<ISecurityService, SecurityService>();
+builder.Services.AddScoped<SignInManager<User>>();
 
 builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
 builder.Services.AddScoped<INotifier, Notifier>();
